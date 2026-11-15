@@ -5,3 +5,7 @@ djangorestframework==3.18.1
 markdown
 django-filter
 drf-yasg[validation]
+djangorestframework-simplejwt
+django-mail-templated
+black
+flake8

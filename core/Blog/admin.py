@@ -1,11 +1,19 @@
 from django.contrib import admin
-from .models import Post,Category
+from .models import Post, Category
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['author','title','status','category','created_date','published_date']
-    list_filter = ['status',]
-    
+    list_display = [
+        "author",
+        "title",
+        "status",
+        "category",
+        "created_date",
+        "published_date",
+    ]
+    list_filter = [
+        "status",
+    ]
 
 
 # Register your models here.
