@@ -19,6 +19,9 @@ jobs:
       - name: Setup Docker Compose
         run: docker compose up -d --build
 
+      - name: Debug Files
+        run: docker compose exec -T backend sh -c "cd /app && pwd && ls -la blog && ls -la blog/test && cat pytest.ini"
+
       - name: Run Tests
         run: docker compose exec -T backend sh -c "cd /app && flake8 && python -m pytest ."
 
