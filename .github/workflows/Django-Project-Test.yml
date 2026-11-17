@@ -11,10 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Docker-Compose
-        run: docker-compose up -d
+      - name: Setup Docker Compose
+        run: docker compose up -d --build
 
       - name: Run Tests
-        run: docker exec backend sh -c "flake8 && pytest ."
+        run: docker compose exec -T backend sh -c "flake8 && pytest ."
+
+      - name: Stop Containers
+        if: always()
+        run: docker compose down
