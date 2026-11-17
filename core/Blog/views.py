@@ -1,9 +1,8 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.views.generic import (
     TemplateView,
     ListView,
     DetailView,
-    FormView,
     CreateView,
     UpdateView,
     DeleteView,
