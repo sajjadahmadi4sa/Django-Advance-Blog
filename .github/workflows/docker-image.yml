@@ -1,0 +1,29 @@
+name: Django Project Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Docker Compose
+        run: docker compose up -d --build
+
+      - name: Debug Files
+        run: docker compose exec -T backend sh -c "cd /app && pwd && ls -la blog && ls -la blog/test && cat pytest.ini"
+
+      - name: Run Tests
+        run: docker compose exec -T backend sh -c "cd /app && flake8 && python -m pytest ."
+
+      - name: Stop Containers
+        if: always()
+        run: docker compose down
