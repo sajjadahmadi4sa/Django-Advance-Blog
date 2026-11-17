@@ -1,6 +1,8 @@
+
 name: Django Project Test
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
   pull_request:
@@ -18,7 +20,7 @@ jobs:
         run: docker compose up -d --build
 
       - name: Run Tests
-      - run: docker compose exec -T backend sh -c "cd /app && flake8 && pytest ."
+        run: docker compose exec -T backend sh -c "cd /app && flake8 && python -m pytest ."
 
       - name: Stop Containers
         if: always()
