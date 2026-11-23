@@ -13,3 +13,4 @@ pytest
 pytest-django
 djoser==2.3.5
 faker
+django-corse-headers

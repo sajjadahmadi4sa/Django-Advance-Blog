@@ -33,6 +33,9 @@ class PostListView(PermissionRequiredMixin, LoginRequiredMixin, ListView):
     paginate_by = 2
     ordering = "-id"
 
+class PostListApiView(TemplateView):
+    template_name = 'blog/post_list_api.html'
+
 
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
